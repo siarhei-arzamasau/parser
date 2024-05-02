@@ -6,7 +6,7 @@ const { Parser } = require('../src/index');
 
 const parser = new Parser();
 
-const program = `1231`;
+const program = `'42'`;
 
 const ast = parser.parse(program);
 
