@@ -10,31 +10,32 @@ const assert = require('assert');
  */
 const tests = [
   require('./literals-test'),
-  require('./statement-list-test')
+  require('./statement-list-test'),
+  require('./block-test'),
 ];
 
 const parser = new Parser();
 
-// /**
-//  * For manual tests.
-//  */
-// function exec() {
-//   const program = `
-//     /**
-//      * Documentation comments: 
-//      */
-//     "hello";
+/**
+ * For manual tests.
+ */
+function exec() {
+  const program = `
+    /**
+     * Documentation comments: 
+     */
+    "hello";
   
-//     // Number:
-//     42;
-//   `;
+    // Number:
+    42;
+  `;
 
-//   const ast = parser.parse(program);
+  const ast = parser.parse(program);
 
-//   console.log(JSON.stringify(ast, null, 2));
-// }
+  console.log(JSON.stringify(ast, null, 2));
+}
 
-// // Manual test:
+// Manual test:
 // exec();
 
 /**
