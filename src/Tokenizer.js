@@ -1,4 +1,19 @@
 /**
+ * Tokenizer spec.
+ */
+
+const Spec = [
+  // -------------------------------------------------------
+  // Numbers:
+  [/^\d+/, 'NUMBER'],
+
+  // -------------------------------------------------------
+  // Strings:
+  [/^"[^"]*"/, 'STRING'],
+  [/^'[^']*'/, 'STRING'],
+];
+
+/**
  * Tokenizer class.
  *
  * Lazily pulls a token from a stream.
@@ -37,41 +52,35 @@ class Tokenizer {
 
     const string = this._string.slice(this._cursor);
 
-    // Numbers: \d+
-    let matched = /^\d+/.exec(string);
+    for (const [regexp, tokenType] of Spec) {
+      const tokenValue = this._match(regexp, string);
 
-    if (matched !== null) {
-      this._cursor += matched[0].length;
+      // Can't match this rule, continue.
+      if (tokenValue === null) {
+        continue;
+      }
+
       return {
-        type: 'NUMBER',
-        value: matched[0],
+        type: tokenType,
+        value: tokenValue,
       };
     }
 
-    // String:
-    matched = /^"[^"]*"/.exec(string);
+    throw new SyntaxError(`Unexpected token "${string[0]}"`);
+  }
 
-    if (matched !== null) {
-      this._cursor += matched[0].length;
+  /**
+   * Matches a token for a regular expression.
+   */
+  _match(regexp, string) {
+    const matched = regexp.exec(string);
 
-      return {
-        type: 'STRING',
-        value: matched[0],
-      };
+    if (matched === null) {
+      return null;
     }
 
-    matched = /^'[^']*'/.exec(string);
-
-    if (matched !== null) {
-      this._cursor += matched[0].length;
-
-      return {
-        type: 'STRING',
-        value: matched[0],
-      };
-    }
-
-    return null;
+    this._cursor += matched[0].length;
+    return matched[0];
   }
 }
 
