@@ -12,6 +12,9 @@ const tests = [require('./literals-test')];
 
 const parser = new Parser();
 
+/**
+ * For manual tests.
+ */
 function exec() {
   const program = `
     /**
@@ -28,6 +31,9 @@ function exec() {
   console.log(JSON.stringify(ast, null, 2));
 }
 
+// Manual test:
+exec();
+
 /**
  * Test function.
  */
@@ -37,4 +43,6 @@ function test(program, expected) {
 }
 
 // Run all tests:
-tests.forEach(testRun => testRun(test));
+tests.forEach((testRun) => testRun(test));
+
+console.log('\x1b[32m', 'All assertions sucessfully passed');
