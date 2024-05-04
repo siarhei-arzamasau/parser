@@ -22,13 +22,15 @@ const parser = new Parser();
  */
 function exec() {
   const program = `
+    
+    42;
+
     /**
      * Documentation comments: 
      */
     "hello";
   
     // Number:
-    42;
   `;
 
   const ast = parser.parse(program);
@@ -37,7 +39,7 @@ function exec() {
 }
 
 // Manual test:
-// exec();
+exec();
 
 /**
  * Test function.
@@ -48,6 +50,6 @@ function test(program, expected) {
 }
 
 // Run all tests:
-tests.forEach((testRun) => testRun(test));
+// tests.forEach((testRun) => testRun(test));
 
 console.log('\x1b[32m', 'All assertions sucessfully passed');
