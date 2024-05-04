@@ -4,6 +4,10 @@
 
 const Spec = [
   // -------------------------------------------------------
+  // Whitespace:
+  [/^\s+/, null],
+
+  // -------------------------------------------------------
   // Numbers:
   [/^\d+/, 'NUMBER'],
 
@@ -58,6 +62,11 @@ class Tokenizer {
       // Can't match this rule, continue.
       if (tokenValue === null) {
         continue;
+      }
+
+      // Should skip token, e.g. whitespace.
+      if (tokenType === null) {
+        return this.getNextToken();
       }
 
       return {
