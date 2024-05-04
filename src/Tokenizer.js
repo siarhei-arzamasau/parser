@@ -8,6 +8,15 @@ const Spec = [
   [/^\s+/, null],
 
   // -------------------------------------------------------
+  // Comments:
+
+  // Skip single-line comments:
+  [/^\/\/.*/, null],
+
+  // Skip multi-line comments:
+  [/^\/\*[\s\S]*?\*\//, null],
+
+  // -------------------------------------------------------
   // Numbers:
   [/^\d+/, 'NUMBER'],
 
