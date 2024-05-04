@@ -50,6 +50,6 @@ function test(program, expected) {
 }
 
 // Run all tests:
-// tests.forEach((testRun) => testRun(test));
+tests.forEach((testRun) => testRun(test));
 
 console.log('\x1b[32m', 'All assertions sucessfully passed');
