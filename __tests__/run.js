@@ -14,7 +14,8 @@ const tests = [
   require('./block-test'),
   require('./empty-statement-test'),
   require('./math-test'),
-  require('./assignment-test')
+  require('./assignment-test'),
+  // require('./variable-test'),
 ];
 
 const parser = new Parser();
@@ -25,7 +26,15 @@ const parser = new Parser();
 function exec() {
   const program = `
     
-    x = y = 42;
+    let y;
+
+    let a, b;
+
+    let c, d = 10;
+
+    let x = 42;
+
+    r = 10;
     
   `;
 
@@ -35,7 +44,7 @@ function exec() {
 }
 
 // Manual test:
-exec();
+// exec();
 
 /**
  * Test function.
