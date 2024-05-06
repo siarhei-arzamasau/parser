@@ -13,6 +13,7 @@ const tests = [
   require('./statement-list-test'),
   require('./block-test'),
   require('./empty-statement-test'),
+  require('./math-test'),
 ];
 
 const parser = new Parser();
@@ -23,14 +24,8 @@ const parser = new Parser();
 function exec() {
   const program = `
     
-    42;
-
-    /**
-     * Documentation comments: 
-     */
-    "hello";
-  
-    // Number:
+    (2 + 2) * 2;
+    
   `;
 
   const ast = parser.parse(program);
