@@ -19,6 +19,7 @@ const tests = [
   require('./if-test'),
   require('./relational-test'),
   require('./equality-test'),
+  require('./logical-test'),
 ];
 
 const parser = new Parser();
@@ -29,9 +30,8 @@ const parser = new Parser();
 function exec() {
   const program = `
 
-  x + 5 > 10 == true;
-  x + 5 > 10 == false;
-  x + 5 > 10 == null;
+  x > 5 && y < 10;
+  x > 5 || y < 10;
   
   `;
 
