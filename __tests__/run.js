@@ -15,7 +15,7 @@ const tests = [
   require('./empty-statement-test'),
   require('./math-test'),
   require('./assignment-test'),
-  // require('./variable-test'),
+  require('./variable-test'),
 ];
 
 const parser = new Parser();
@@ -34,6 +34,8 @@ function exec() {
 
     let x = 42;
 
+    let foo = (bar = 10);
+
     r = 10;
     
   `;
@@ -44,7 +46,7 @@ function exec() {
 }
 
 // Manual test:
-// exec();
+exec();
 
 /**
  * Test function.
