@@ -13,12 +13,12 @@ function main(argv) {
 
   let ast = null;
 
-  // Direct expression:
-
+  // Direct execution:
   if (mode === '-e') {
     ast = parser.parse(exp);
   }
 
+  // Execution from the file:
   if (mode === '-f') {
     const src = fs.readFileSync(exp, 'utf-8');
     ast = parser.parse(src);

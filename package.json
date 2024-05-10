@@ -1,8 +1,8 @@
 {
-  "name": "interpreter",
+  "name": "parser",
   "version": "1.0.0",
-  "description": "Studying algorithms and data structures",
-  "main": "index.js",
+  "description": "Parser",
+  "main": ".src/index.js",
   "scripts": {
     "test": "node ./__tests__/run.js",
     "eval": "./bin/letter-rdp -e",
